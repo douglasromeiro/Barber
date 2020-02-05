@@ -1,4 +1,4 @@
-package com.example.barber.Activitys;
+package com.example.barber;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.barber.R;
+import com.example.barber.Activitys.TelaPrincipalActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("TAG", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Login realizado com sucesso", Toast.LENGTH_SHORT).show();
-
                             openTelaPrincipal();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -91,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+      @Override
     protected void onStart() {
         super.onStart();
 
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //Interação entre telas
-    private void openTelaPrincipal(){
+    public void openTelaPrincipal(){
 
         Intent telaPrincipal = new Intent(getApplicationContext(), TelaPrincipalActivity.class);
         startActivity(telaPrincipal);
