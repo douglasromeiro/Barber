@@ -50,8 +50,10 @@ public class HomeFragment extends Fragment {
 
         private void closePrincipal() {
             Intent intent = new Intent(getActivity(), MainActivity.class);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            control.finish();
         }
 
 

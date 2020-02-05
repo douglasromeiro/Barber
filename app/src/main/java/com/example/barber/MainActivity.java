@@ -1,6 +1,7 @@
 package com.example.barber;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,19 +91,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-      @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (userConected()){
-        openTelaPrincipal();
-
-        }
-    }
     //Interação entre telas
     public void openTelaPrincipal(){
 
         Intent telaPrincipal = new Intent(getApplicationContext(), TelaPrincipalActivity.class);
+        telaPrincipal.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        telaPrincipal.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(telaPrincipal);
         finish();
     }
