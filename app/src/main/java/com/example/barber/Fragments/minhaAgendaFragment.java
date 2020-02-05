@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 import com.example.barber.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link androidx.fragment.app.Fragment} subclass.
  */
-public class AndroidFragment extends Fragment {
+public class minhaAgendaFragment extends Fragment {
 
 
-    public AndroidFragment() {
+    public minhaAgendaFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class AndroidFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_android, container, false);
+        return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
 }

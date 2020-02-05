@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.barber.Fragments.AndroidFragment;
+import com.example.barber.Fragments.AgendarFragment;
+import com.example.barber.Fragments.FidelidadeFragment;
 import com.example.barber.Fragments.HomeFragment;
-import com.example.barber.Fragments.SearchFragment;
+import com.example.barber.Fragments.PerfilFragment;
+import com.example.barber.Fragments.minhaAgendaFragment;
 import com.example.barber.MainActivity;
 import com.example.barber.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -45,14 +47,20 @@ public class TelaPrincipalActivity extends AppCompatActivity {
                         Fragment fragment = null;
 
                         switch (menuItem.getItemId()) {
-                            case R.id.android:
-                                fragment = new AndroidFragment();
-                                break;
                             case R.id.home:
                                 fragment = new HomeFragment();
                                 break;
-                            case R.id.search:
-                                fragment = new SearchFragment();
+                            case R.id.agendar:
+                                fragment = new AgendarFragment();
+                                break;
+                            case R.id.minhaAgenda:
+                                fragment = new minhaAgendaFragment();
+                                break;
+                            case R.id.fidelidade:
+                                fragment = new FidelidadeFragment();
+                                break;
+                            case R.id.perfil:
+                                fragment = new PerfilFragment();
                                 break;
 
                         }

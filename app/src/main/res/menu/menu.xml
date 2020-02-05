@@ -6,14 +6,24 @@
         android:title="Home"
         android:icon="@drawable/ic_home"/>
     <item
-    android:id="@+id/android"
+    android:id="@+id/agendar"
     android:title="Android"
-    android:icon="@drawable/ic_android"/>
+    android:icon="@drawable/ic_agendar"/>
 
     <item
-    android:id="@+id/search"
+    android:id="@+id/minhaAgenda"
     android:title="Search"
-    android:icon="@drawable/ic_search"/>
+    android:icon="@drawable/ic_minha_agenda"/>
+
+    <item
+        android:id="@+id/fidelidade"
+        android:title="Search"
+        android:icon="@drawable/ic_fidelidade"/>
+
+    <item
+        android:id="@+id/perfil"
+        android:title="Search"
+        android:icon="@drawable/ic_perfil"/>
 
 
 </menu>

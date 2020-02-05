@@ -13,10 +13,10 @@ import com.example.barber.R;
 /**
  * A simple {@link androidx.fragment.app.Fragment} subclass.
  */
-public class SearchFragment extends Fragment {
+public class FidelidadeFragment extends Fragment {
 
 
-    public SearchFragment() {
+    public FidelidadeFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_fidelidade, container, false);
     }
 
 }

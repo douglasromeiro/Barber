@@ -35,26 +35,26 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_home, container, false);
-        bLogout = (Button) vista.findViewById(R.id.btnLogout);
+        //bLogout = (Button) vista.findViewById(R.id.btnLogout);
 
-        bLogout.setOnClickListener(new View.OnClickListener() {
+        /*bLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 control.desconnect();
                 closePrincipal();
             }
         });
-
+*/
         return vista;
     }
 
-        private void closePrincipal() {
+        /*private void closePrincipal() {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             control.finish();
-        }
+        }*/
 
 
 }
