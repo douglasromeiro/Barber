@@ -1,7 +1,6 @@
-package com.example.barber.Fragments;
+package com.example.barber.View.Fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +9,8 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.barber.Activitys.TelaPrincipalActivity;
-import com.example.barber.MainActivity;
+import com.example.barber.View.Activitys.TelaPrincipalActivity;
 import com.example.barber.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.

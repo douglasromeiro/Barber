@@ -1,4 +1,4 @@
-package com.example.barber.Activitys;
+package com.example.barber.View.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,12 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.barber.Fragments.AgendarFragment;
-import com.example.barber.Fragments.FidelidadeFragment;
-import com.example.barber.Fragments.HomeFragment;
-import com.example.barber.Fragments.PerfilFragment;
-import com.example.barber.Fragments.minhaAgendaFragment;
-import com.example.barber.MainActivity;
+import com.example.barber.View.Fragments.AgendarFragment;
+import com.example.barber.View.Fragments.FidelidadeFragment;
+import com.example.barber.View.Fragments.HomeFragment;
+import com.example.barber.View.Fragments.PerfilFragment;
+import com.example.barber.View.Fragments.minhaAgendaFragment;
 import com.example.barber.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;

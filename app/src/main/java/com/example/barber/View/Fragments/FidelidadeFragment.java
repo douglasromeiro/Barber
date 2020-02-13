@@ -1,4 +1,4 @@
-package com.example.barber.Fragments;
+package com.example.barber.View.Fragments;
 
 
 import android.os.Bundle;

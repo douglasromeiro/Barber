@@ -1,19 +1,20 @@
-package com.example.barber;
+package com.example.barber.View.Activitys;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.barber.Activitys.TelaPrincipalActivity;
+import com.example.barber.Control.Banco;
+import com.example.barber.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword;
     private Button btnLogar, btnCancelar;
+    private TextView cConta;
 
     //Conexão com Firebase automaticamente
-
     private FirebaseAuth mAuth;
-
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnLogar = (Button) findViewById(R.id.btnLogin);
         btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        cConta = (TextView) findViewById(R.id.criarConta);
         //Botão para logar
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,26 @@ public class MainActivity extends AppCompatActivity {
                 edtPassword.setText("");
             }
         });
+        cConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CadastroActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Checa se o usuário está logado e atualiza
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //updateUI(currentUser);
+    }
+
     //Método para validar login
     private void loginUsuario(String email, String password) {
 
@@ -68,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            //FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Login realizado com sucesso", Toast.LENGTH_SHORT).show();
                             openTelaPrincipal();
                         } else {

@@ -7,22 +7,22 @@
         android:icon="@drawable/ic_home"/>
     <item
     android:id="@+id/agendar"
-    android:title="Android"
+    android:title="Agendar"
     android:icon="@drawable/ic_agendar"/>
 
     <item
     android:id="@+id/minhaAgenda"
-    android:title="Search"
+    android:title="Minha Agenda"
     android:icon="@drawable/ic_minha_agenda"/>
 
     <item
         android:id="@+id/fidelidade"
-        android:title="Search"
+        android:title="Fidelidade"
         android:icon="@drawable/ic_fidelidade"/>
 
     <item
         android:id="@+id/perfil"
-        android:title="Search"
+        android:title="Perfil"
         android:icon="@drawable/ic_perfil"/>
 
 

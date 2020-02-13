@@ -1,4 +1,4 @@
-package com.example.barber.Fragments;
+package com.example.barber.View.Fragments;
 
 
 import android.os.Bundle;
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 import com.example.barber.R;
 
 /**
- * A simple {@link androidx.fragment.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  */
-public class PerfilFragment extends Fragment {
+public class AgendarFragment extends Fragment {
 
 
-    public PerfilFragment() {
+    public AgendarFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class PerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+        return inflater.inflate(R.layout.fragment_android, container, false);
     }
 
 }
