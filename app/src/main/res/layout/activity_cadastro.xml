@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,8 +9,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-109dp"
-        tools:layout_editor_absoluteY="-371dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-32dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="124dp"
-                android:text="Cadastro"
+                android:text="@string/cadastro"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
@@ -29,133 +30,160 @@
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome:"
-                android:textSize="15dp" />
+                android:text="@string/nome"
+                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editNome"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E-mail:"
-                android:textSize="15dp" />
+                android:text="@string/e_mail"
+                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editEmail"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Endereço:"
-                android:textSize="15dp" />
+                android:text="@string/endere_o"
+                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/edtEndereco"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Complemento:"
-                android:textSize="15dp" />
+                android:text="@string/complemento"
+                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/edtComplemento"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:autofillHints="" />
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Data de Nascimento:"
-                android:textSize="15dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_de_nascimento"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/edtDataNascimento"
+                    android:layout_width="146dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="-2dp"
+                    android:layout_marginTop="25dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:autofillHints="" />
+
+                <ImageButton
+                    android:id="@+id/calendarIb"
+                    android:layout_width="34dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="148dp"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@android:drawable/ic_menu_my_calendar"
+                    android:contentDescription="@string/todo" />
+            </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cep"
+                    android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText6"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:id="@+id/edtCep"
+                android:layout_width="147dp"
+                android:layout_height="40dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CEP:"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/editText5"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Senha:"
-                android:textSize="15dp" />
+                android:text="@string/senha"
+                android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editSenha"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="-109dp"
-                tools:layout_editor_absoluteY="129dp" />
+                tools:layout_editor_absoluteY="129dp"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Confirmar senha:"
-                android:textSize="15dp"
+                android:text="@string/confirmar_senha"
+                android:textSize="15sp"
                 tools:layout_editor_absoluteX="-109dp"
                 tools:layout_editor_absoluteY="174dp" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/edtConfSenha"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="-109dp"
-                tools:layout_editor_absoluteY="201dp" />
+                tools:layout_editor_absoluteY="201dp"
+                android:autofillHints="" />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/btnCadastrar"
-                android:text="Cadastrar"/>
-
-            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/cadastrar" />
+
+            <Button
                 android:id="@+id/btnCancelar"
-                android:text="Cancelar"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancelar" />
 
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

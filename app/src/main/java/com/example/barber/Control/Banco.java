@@ -18,9 +18,8 @@ public class Banco {
     public static FirebaseAuth getFirebaseAuth(){
         if (firebaseAuth == null){
             inicializarFirebaseAuth();
-            
         }
-        return firebaseAuth;
+            return firebaseAuth;
     }
     //Inicializa o banco
     private static void inicializarFirebaseAuth() {
@@ -44,7 +43,7 @@ public class Banco {
 
     }
     //Saída do usuário.
-    public static void LogOut(){
+    public static void logOut(){
         firebaseAuth.signOut();
 
     }

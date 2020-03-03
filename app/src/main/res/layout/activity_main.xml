@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.102" />
 
     <EditText
-        android:id="@+id/edtEmail"
+        android:id="@+id/loginEmail"
         android:layout_width="293dp"
         android:layout_height="39dp"
         android:ems="10"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.282" />
 
     <EditText
-        android:id="@+id/edtPassword"
+        android:id="@+id/loginSenha"
         android:layout_width="293dp"
         android:layout_height="39dp"
         android:ems="10"
@@ -98,10 +98,11 @@
         app:layout_constraintVertical_bias="0.581" />
 
     <TextView
-        android:id="@+id/criarConta"
+        android:id="@+id/cadastrarConta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Criar Conta"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.442"
