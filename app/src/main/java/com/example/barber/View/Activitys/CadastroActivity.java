@@ -2,7 +2,6 @@ package com.example.barber.View.Activitys;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -17,12 +16,10 @@ import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.barber.Control.Banco;
 import com.example.barber.R;
-import com.example.barber.model.Cliente;
+import com.example.barber.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,108 +28,76 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.Calendar;
-import java.util.UUID;
+
 
 public class CadastroActivity extends AppCompatActivity {
 
     private Button criarConta, cancelar;
     private EditText editNome, editEmail, editEndereco, editComplemento, editCep, editDataNascimento, editSenha, editConfSenha;
 
-    private FirebaseUser user;
-    private FirebaseAuth auth;
-
+    private FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
-    Cliente c = new Cliente();
+    private static final String USUARIO = "usuario";
+    private static final String TAG = "CadastroActivity";
 
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-        auth = FirebaseAuth.getInstance();
-        inicializarFirebase();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference(USUARIO);
+        mAuth = FirebaseAuth.getInstance();
         incializarComponentes();
         chamarCalendario();
-        clckCadastro();
-        clickCancelar();
+        clicksButtons();
     }
 
-    private void clckCadastro() {
+    private void clicksButtons(){
         criarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               creatAccount();
-               userLogin();
-            }
-        });
-    }
-
-    private void clickCancelar(){
-        cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    private void inicializarFirebase() {
-        FirebaseApp.initializeApp(CadastroActivity.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-    }
-
-
-       private void userLogin() {
-                   c.setId(UUID.randomUUID().toString());
-                   c.setNome(editNome.getText().toString());
-                   c.setEndereco(editEndereco.getText().toString());
-                   c.setComplemento(editComplemento.getText().toString());
-                   c.setCep(Integer.valueOf(editCep.getText().toString()));
-                   c.setDataNascimento(editDataNascimento.getText().toString());
-                   databaseReference.child("Cliente").child(c.getId()).setValue(c);
-
-                }
-
-    private void creatAccount(){
-        String email = editEmail.getText().toString();
-        String senha = editSenha.getText().toString();
-
-        auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    alert("Usuário cadastrado com sucesso!");
-                    FirebaseUser user = auth.getCurrentUser();
-                    limparCampos();
-                    Intent i = new Intent(CadastroActivity.this, TelaPrincipalActivity.class);
-                    startActivity(i);
-                    finish();
-                }else{
-                    alert("Erro ao cadastrar!" +email + senha);
+                if(editEmail.getText().toString() != null && editSenha.getText().toString() != null) {
+                    String email = editEmail.getText().toString();
+                    String nome = editNome.getText().toString();
+                    String endereco = editEndereco.getText().toString();
+                    String complemento = editComplemento.getText().toString();
+                    String dataNascimento = editDataNascimento.getText().toString();
+                    Integer cep = Integer.valueOf(editCep.getText().toString());
+                    String senha = editSenha.getText().toString();
+                    usuario = new Usuario(nome, email, endereco, complemento, senha, dataNascimento, cep);
+                    registrarUsuario(email, senha);
                 }
             }
         });
     }
+    private void registrarUsuario(String email, String senha) {
 
-    private void limparCampos() {
-        editNome.setText("");
-        editEmail.setText("");
-        editEndereco.setText("");
-        editComplemento.setText("");
-        editCep.setText("");
-        editDataNascimento.setText("");
-        editSenha.setText("");
-        editConfSenha.setText("");
+        mAuth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:Sucesso");
+                            Toast.makeText(CadastroActivity.this, "Usuário criado com sucesso!",
+                                    Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:Falha", task.getException());
+                            Toast.makeText(CadastroActivity.this, "Falha no cadastro!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
     }
-
-
-    private void alert(String msg){
-        Toast.makeText(CadastroActivity.this, msg ,Toast.LENGTH_LONG).show();
-    }
-
     private void incializarComponentes(){
 
         editNome = (EditText) findViewById(R.id.editNome);
@@ -174,12 +139,13 @@ public class CadastroActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        auth = Banco.getFirebaseAuth();
-        user = Banco.getFirebaseUser();
-        //FirebaseUser currentUser = auth.getCurrentUser();
+    public void updateUI(FirebaseUser currentUser){
+        String keyId = databaseReference.push().getKey();
+        databaseReference.child(keyId).setValue(usuario);
+        Intent i = new Intent(this, TelaPrincipalActivity.class);
+        startActivity(i);
+
     }
+
 
 }
