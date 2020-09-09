@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     alert("Login realizado com sucesso!");
                     Intent i = new Intent(MainActivity.this, TelaPrincipalActivity.class);
                     startActivity(i);
+                    finish();
                 }else{
                     alert("E-mail ou senha errado!");
                 }
